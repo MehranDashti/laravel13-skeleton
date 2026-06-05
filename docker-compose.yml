@@ -1,0 +1,49 @@
+version: "3.3"
+services:
+  redis:
+    image: redis:alpine
+    container_name: sample-redis
+    command: redis-server --save "" --appendonly no
+    networks:
+      - sample-network
+
+  sample-app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    container_name: sample-app
+    restart: unless-stopped
+    volumes:
+        - ./app:/app/app
+        - ./config:/app/config
+        - ./contribute:/app/contribute
+        - ./database:/app/database
+        - ./docker:/app/docker
+        - ./lang:/app/lang
+        - ./public:/app/public
+        - ./resources:/app/resources
+        - ./routes:/app/routes
+        - ./storage:/app/storage
+        - ./tests:/app/tests
+        - ./composer.json:/app/composer.json
+        - ./composer.lock:/app/composer.lock
+        - ./.env:/app/.env
+        - ./docker/supervisord.conf:/etc/supervisor/conf.d/supervisor.conf
+        - ./docker/php/php.ini-development:/usr/local/etc/php/php.ini-development
+        - ./docker/php/php.ini-production:/usr/local/etc/php/php.ini-production
+    command: ["bash", "/app/docker/entrypoint.sh"]
+    ports:
+      - 9800:8080
+    environment:
+      WWWUSER: '${WWWUSER}'
+      LARAVEL_SAIL: 1
+      XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+      XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+      IGNITION_LOCAL_SITES_PATH: '${PWD}'
+    networks:
+      - sample-network
+
+networks:
+    sample-network:
+        driver: bridge
+
