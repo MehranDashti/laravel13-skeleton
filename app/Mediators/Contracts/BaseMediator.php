@@ -34,7 +34,7 @@ abstract class BaseMediator implements BaseMediatorInterface
      *
      * @return $this
      */
-    public function setService(BaseServiceInterface $service): self
+    public function setService(BaseServiceInterface $service): static
     {
         $this->service = $service;
 
@@ -54,7 +54,7 @@ abstract class BaseMediator implements BaseMediatorInterface
      *
      * @return $this
      */
-    public function setRepository(BaseRepositoryInterface $repository): self
+    public function setRepository(BaseRepositoryInterface $repository): static
     {
         $this->repository = $repository;
 

@@ -9,7 +9,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
 {
     use BaseRepositoryTrait;
 
-    protected $model;
+    protected Model $model;
     protected array $selectItems = ['*'];
     protected array $withItems = [];
 

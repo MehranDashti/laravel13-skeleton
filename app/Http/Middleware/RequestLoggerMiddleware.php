@@ -58,7 +58,7 @@ class RequestLoggerMiddleware
             'method' => request()->getRealMethod(),
             'payload' => $request->all(),
             'query_params' => $request->getQueryString(),
-            'headers' => request()->header(),
+            'headers' => collect(request()->header())->except(['authorization', 'cookie', 'allowed_secret'])->toArray(),
             'errors' => [
                 'message' => $response->getOriginalContent()['message'] ?? null,
                 'errors' => app()->environment() === 'production' ? $errors : [],

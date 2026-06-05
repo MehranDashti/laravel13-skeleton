@@ -22,14 +22,13 @@ class HealthCheckController extends Controller
     /**
      * @return JsonResponse
      */
-    public function healthCheck(): JsonResponse
+    public function index(): JsonResponse
     {
         return $this->successResponse(
             trans('messages.action_successfully_done'),
             [
                 'app_name' => config('app.name'),
                 'environment' => app()->environment(),
-                'app_debug' => config('app.debug'),
             ]
         );
     }

@@ -111,7 +111,6 @@ app/
 │   ├── Requests/
 │   │   ├── SampleRequest.php
 │   │   └── Traits/
-│   │       ├── CheckMobileTrait.php
 │   │       └── RequestDefaultValueTrait.php
 │   └── Resources/
 │       ├── SampleResource.php
@@ -140,15 +139,10 @@ app/
         ├── BaseService.php
         ├── BaseServiceInterface.php
         ├── BaseDatabaseServiceInterface.php
-        ├── BaseThirdPartyService.php
-        ├── ClientConditionInterface.php
         ├── DataServiceInterface.php
         ├── HasMediatorInterface.php
-        ├── MetaDataServiceInterface.php
         └── Traits/
             ├── BaseServiceTrait.php
-            ├── FileServiceTrait.php
-            ├── ParamsServiceTrait.php
             └── WebFilter.php
 
 config/

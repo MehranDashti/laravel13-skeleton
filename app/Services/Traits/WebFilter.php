@@ -197,11 +197,7 @@ trait WebFilter
     {
         $queryInfo = $this->queryInfo();
         if (! $pagination) {
-            if (! $queryInfo['page_size']) {
-                $pagination = 100000;
-            } else {
-                $pagination = $queryInfo['page_size'];
-            }
+            $pagination = $queryInfo['page_size'] ?: $this->getServicePaginate();
         }
 
         $this->builder = $this->builder->paginate((int) $pagination, ['*'], 'page', (int) $queryInfo['currentPage']);

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\JsonMiddleware;
 use App\Http\Middleware\RequestLoggerMiddleware;
 use Mehrand\ApiExceptions\Handlers\ApiException;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         using: function () {
-            Route::middleware(['api', RequestLoggerMiddleware::class, SubstituteBindings::class])
+            Route::middleware(['api', JsonMiddleware::class, RequestLoggerMiddleware::class, SubstituteBindings::class])
                 ->prefix('api/v1')
                 ->group(base_path('routes/api.php'));
 
