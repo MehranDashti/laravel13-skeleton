@@ -116,9 +116,7 @@ app/
 │   └── Resources/
 │       ├── SampleResource.php
 │       └── Traits/
-│           ├── ProductDataTrait.php
-│           ├── S3Resource.php
-│           └── UserFavoriteProductTrait.php
+│           └── S3Resource.php
 ├── Mediators/
 │   ├── SampleMediator.php
 │   └── Contracts/
