@@ -34,7 +34,6 @@ A production-ready Laravel 13 API boilerplate built with a layered architecture,
 
 - PHP >= 8.3
 - Composer
-- Node.js >= 18
 - SQLite / MySQL / PostgreSQL
 - Redis (optional, for caching/queues)
 - Docker & Docker Compose (for containerized setup)
@@ -185,7 +184,7 @@ git clone <repository-url>
 cd laravel13-skeleton
 ```
 
-**2. One-command setup** (installs deps, copies `.env`, generates key, runs migrations, builds assets):
+**2. One-command setup** (installs deps, copies `.env`, generates key, runs migrations):
 
 ```bash
 composer run setup
@@ -201,7 +200,6 @@ This concurrently starts:
 - `php artisan serve` — HTTP server
 - `php artisan queue:listen` — Queue worker
 - `php artisan pail` — Log viewer
-- `npm run dev` — Vite asset bundler
 
 ### Docker Setup
 
